@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sandscript - Interactive drawing app with particle animation" />
+  <meta name="theme-color" content="#0000ff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/sandscript/icon-192.png" type="image/png" />
+  <title>Sandscript</title>
+  <!-- Підключення Tailwind CSS через CDN для тестування, якщо не зібрано локально -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div id="root" class="container mx-auto p-4"></div>
+  <!-- Підключення основного скрипта React -->
+  <script type="module" src="/src/index.js"></script>
+  <!-- Додатковий скрипт для підтримки сервіс-воркера, якщо потрібно -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sandscript/service-worker.js')
+          .then(registration => console.log('Service Worker registered:', registration))
+          .catch(error => console.log('Service Worker registration failed:', error));
+      });
+    }
+  </script>
+</body>
+</html>
